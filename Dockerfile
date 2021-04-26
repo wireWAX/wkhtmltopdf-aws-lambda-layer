@@ -24,7 +24,11 @@ RUN mkdir -p {bin,lib} \
     && cp /tmp/wkhtml*/usr/local/bin/* bin \
     && cp /tmp/*/usr/lib64/* lib || :
 
+
 # Zip files
 ENV LAYER_ZIP="layer.zip"
+
+RUN rm -rf bin/wkhtmltoimage
+
 RUN zip -r $LAYER_ZIP bin lib \
     && mv $LAYER_ZIP /
